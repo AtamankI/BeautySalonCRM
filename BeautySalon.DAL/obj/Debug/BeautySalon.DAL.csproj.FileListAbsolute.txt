@@ -1,0 +1,12 @@
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\bin\Debug\BeautySalon.DAL.dll.config
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\bin\Debug\BeautySalon.DAL.dll
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\bin\Debug\BeautySalon.DAL.pdb
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\bin\Debug\EntityFramework.dll
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\bin\Debug\EntityFramework.xml
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\obj\Debug\BeautySalon.DAL.csproj.AssemblyReference.cache
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\obj\Debug\BeautySalon.DAL.csproj.CoreCompileInputs.cache
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\obj\Debug\BeautySalon.DAL.csproj.CopyComplete
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\obj\Debug\BeautySalon.DAL.dll
+D:\Study\Exams\BeautySalon\BeautySalon.DAL\obj\Debug\BeautySalon.DAL.pdb
