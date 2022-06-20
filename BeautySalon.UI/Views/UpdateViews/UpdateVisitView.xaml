@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="BeautySalon.UI.Views.UpdateViews.UpdateVisitView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BeautySalon.UI.Views.UpdateViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel MinWidth="300"
+                    Margin="50"
+                    Grid.Column="0">
+            <Label Content="Date"/>
+            <DatePicker SelectedDate="{Binding SelectedVisit.Date}"
+                        Height="30">
+            </DatePicker>
+            <Label Content="Master"/>
+            <ComboBox ItemsSource="{Binding Masters}"
+                      SelectedItem="{Binding SelectedMaster}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="80" 
+                                   Text="{Binding Path=Lastname}" />
+                        <TextBlock Width="80" 
+                                   Text="{Binding Path=Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Client"/>
+            <ComboBox ItemsSource="{Binding Clients}"
+                      SelectedItem="{Binding SelectedClient}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="80" 
+                                   Text="{Binding Path=Lastname}" />
+                        <TextBlock Width="80" 
+                                   Text="{Binding Path=Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Service"/>
+            <ComboBox ItemsSource="{Binding Services}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding SelectedService}">
+            </ComboBox>
+            <Label Content="Service Price"/>
+            <TextBox Text="{Binding SelectedService.Price, 
+                                    StringFormat={}{0:#.#.0}}"/>
+            <Label Content="Additional cost"/>
+            <TextBox Text="{Binding AdditionalCost, 
+                                    StringFormat={}{0:#.#.0}}"/>
+            <Label Content="Material cost"/>
+            <TextBox Text="{Binding MaterialCost, 
+                                    StringFormat={}{0:#.#.0}}"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Total Visit Amount"/>
+                <Button Content="Count"
+                        Command="{Binding CountVisitCommand}"/>
+            </StackPanel>
+            <TextBlock MinHeight="20" 
+                       FontSize="20" 
+                       HorizontalAlignment="Center"
+                       Foreground="#FFBF2020"
+                       Text="{Binding TotalVisitAmount, 
+                                      StringFormat={}{0:#.#.0}}">
+            </TextBlock>
+            <Label Content="PaymentType"/>
+            <ComboBox ItemsSource="{Binding PaymentTypes}"
+                      DisplayMemberPath="Type"
+                      SelectedItem="{Binding SelectedPaymentType}">
+            </ComboBox>
+            <Button Content="Save"
+                    Command="{Binding SaveVisitCommand}"/>
+            <Button Content="Cancel"
+                    Command="{Binding CancelCommand}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" 
+                    Visibility="{Binding AddControlsVisible}">
+            <Label Content="Materials"/>
+            <ComboBox FontSize="20" 
+                      MinWidth="400"
+                      ItemsSource="{Binding Materials}"
+                      SelectedItem="{Binding SelectedMaterial}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>
+                                <TextBlock.Text >
+                                    <MultiBinding StringFormat="{}{0} {1} {2} price:{3}, price per gram:{4}, avaliable:{5} gram">
+                                        <Binding Path="Name"/>
+                                        <Binding Path="Number"/>
+                                        <Binding Path="ManufacturerName"/>
+                                        <Binding Path="Price"/>
+                                        <Binding Path="PriceGram"/>
+                                        <Binding Path="GramAmount"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Enter gram amount"/>
+            <TextBox Text="{Binding GramAmount}"/>
+            <Button Content="Add to calculation"
+                    Command="{Binding AddToCalculationMaterialCommand}"/>
+            <Button Content ="Remove from calculation"
+                    Command="{Binding RemoveFromCalculationMaterialCommand}"/>
+            <Label Content="Total MaterialAmount"
+                   HorizontalAlignment="Center"/>
+            <TextBlock MinHeight="20" 
+                       FontSize="20" 
+                       HorizontalAlignment="Center"
+                       Foreground="#FFBF2020"
+                       Text="{Binding MaterialTotalAmount, 
+                                      StringFormat={}{0:#.#.0}}">
+            </TextBlock>
+            <DataGrid ItemsSource="{Binding CalculationMaterials}"
+                      SelectedItem="{Binding SelectedCalculationMaterial}"
+                      Grid.Column="0"
+                      Grid.Row="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" 
+                                        Header="Name" 
+                                        MinWidth="200"/>
+                    <DataGridTextColumn Binding="{Binding Number}" 
+                                        Header="Number" 
+                                        MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding GramAmount}" 
+                                        Header="GramAmount" 
+                                        MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding Price}" 
+                                        Header="Price" 
+                                        MinWidth="50"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>

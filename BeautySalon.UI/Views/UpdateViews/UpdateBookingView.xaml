@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="BeautySalon.UI.Views.UpdateViews.UpdateBookingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BeautySalon.UI.Views.UpdateViews"
+             xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label Content="Date"
+                   HorizontalAlignment="Center">
+            </Label>
+            <Calendar SelectedDate="{Binding SelectedBooking.Date}"/>
+            <Label Content="Time"/>
+            <toolkit:TimePicker Name="tp"
+                                FormatString="hh:mm"
+                                StartTime="7:00"
+                                EndTime="21:00"
+                                FontSize="20"
+                                TimeInterval="00:05"
+                                Value="{Binding SelectedDate}" 
+                                CultureInfo="ru-UA" 
+                                TextAlignment="Center"
+                                Height="30"
+                                />
+            <Label Content="Master"/>
+            <ComboBox ItemsSource="{Binding Masters}"
+                      SelectedItem="{Binding SelectedMaster}"
+                      MinWidth="400">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="80" 
+                                       Text="{Binding Path=Lastname}"/>
+                            <TextBlock Width="80" 
+                                       Text="{Binding Path=Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Client"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Select"/>
+                <ComboBox ItemsSource="{Binding Clients}"
+                          SelectedItem="{Binding SelectedClient}"
+                          MinWidth="200">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="80" 
+                                           Text="{Binding Path=Lastname}"/>
+                                <TextBlock Width="80" 
+                                           Text="{Binding Path=Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Label Margin="5,0"
+                       Content="or">
+                </Label>
+                <Button Content="Add new"
+                        Margin="5, 0"
+                        Command="{Binding AddNewClientCommand}">
+                </Button>
+            </StackPanel>
+            <Label Content="Service"/>
+            <ComboBox ItemsSource="{Binding Services}"
+                      SelectedItem="{Binding SelectedService}"
+                      MinWidth="400">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="350" 
+                                       Text="{Binding Path=Name}"/>
+                            <TextBlock Width="100" 
+                                       Text="{Binding Path=Price, 
+                                                      StringFormat={}{0:#.#.0}}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Notes"/>
+            <TextBox Text="{Binding SelectedBooking.Notes}"/>
+            <Button Content="Save"
+                    Command="{Binding SaveBookingCommand}"/>
+            <Button Content="Cancel"
+                    Command="{Binding CancelBookingCommand}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Visibility="{Binding AddNewClientVilibility}">
+            <ContentControl 
+                    Content="{Binding AddNewClientView}">
+            </ContentControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

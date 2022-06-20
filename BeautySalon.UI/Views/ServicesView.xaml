@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="BeautySalon.UI.Views.ServicesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BeautySalon.UI.Views"
+             mc:Ignorable="d" 
+             Visibility="{Binding SelectedMenuControlVisibility}"
+             DataContext="{Binding Source={StaticResource viewModelLocator}, 
+                                   Path=ServiceViewModel}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
+            <ContentControl Content="{Binding CurrentView}"/>
+        </StackPanel>
+        <TextBlock Text="Loading..."
+                   TextAlignment="Center"
+                   FontSize="40"
+                   Visibility="{Binding LoadingTextBlockVisibility}">
+        </TextBlock>
+        <DataGrid Grid.Column="0"
+                  ColumnWidth="*"
+                  ItemsSource="{Binding Services}"
+                  SelectedItem="{Binding SelectedService}"
+                  Visibility="{Binding DataGridVisibility}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" 
+                                    Header="Name"  
+                                    MinWidth="280"/>
+                <DataGridTextColumn Binding="{Binding Price}" 
+                                    Header="Price"
+                                    MinWidth="10"/>
+                <DataGridTextColumn Binding="{Binding CategoryName}"
+                                    Header="ServiceType"  
+                                    MinWidth="130"/>
+                <DataGridTextColumn Binding="{Binding HallType}" 
+                                    Header="HallType" 
+                                    MinWidth="130"/>
+                <DataGridTextColumn Binding="{Binding IsAvaliable}"  
+                                    Header="IsAvaliable" 
+                                    MinWidth="50"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1"
+                    VerticalAlignment="Top"
+                    MinWidth="250"
+                    Visibility="{Binding MainControlsVisible}">
+            <Button Content="Get All" 
+                    Command="{Binding GetAllServicesCommand}"/>
+            <Button Content="Add" 
+                    Command="{Binding AddServiceCommand}"/>
+            <Button Content ="Edit" 
+                    Command="{Binding UpdateServiceCommand}"/>
+            <Button Content ="Remove"
+                    Command="{Binding RemoveServiceCommand}"/>
+            <Button Content ="Make unavaliable"
+                    Command="{Binding MakeUnavaliableServiceCommand}"/>
+            <Label HorizontalAlignment="Center"
+                   Content="Sorting by"/>
+            <RadioButton Command="{Binding SortServicesCommand}"
+                         CommandParameter="ServiceNameAsc"
+                         Content="ServiceName (A-Z)">
+            </RadioButton>
+            <RadioButton Command="{Binding SortServicesCommand}"
+                         CommandParameter="ServiceNameDesc"
+                         Content="ServiceName (Z-A)">
+            </RadioButton>
+            <RadioButton Command="{Binding SortServicesCommand}"
+                         CommandParameter="ServiceTypeAsc"
+                         Content="ServiceType (A-Z)">
+            </RadioButton>
+            <RadioButton Command="{Binding SortServicesCommand}"
+                         CommandParameter="ServiceTypeDesc"
+                         Content="ServiceType (Z-A)">
+            </RadioButton>
+            <CheckBox Margin="5" 
+                      Command="{Binding ShowArhiveServiceCommand}"
+                      Content="Show unavaliable"
+                      IsChecked="{Binding IsServicesChecked}">
+            </CheckBox>
+            <Button Content ="Back to menu"
+                    Command="{Binding BackMainMenuCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
