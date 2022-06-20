@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.DAL", "BeautySa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.BLL", "BeautySalon.BLL\BeautySalon.BLL.csproj", "{228D2C88-4FBD-40C5-A716-7FBBDEDCE6C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalon.UI", "..\GitProjects\BeautySalon\BeautySalon.UI\BeautySalon.UI.csproj", "{C4A26A87-B3E2-4C8A-A247-D7ADE04DC837}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{228D2C88-4FBD-40C5-A716-7FBBDEDCE6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{228D2C88-4FBD-40C5-A716-7FBBDEDCE6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{228D2C88-4FBD-40C5-A716-7FBBDEDCE6C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A26A87-B3E2-4C8A-A247-D7ADE04DC837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A26A87-B3E2-4C8A-A247-D7ADE04DC837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A26A87-B3E2-4C8A-A247-D7ADE04DC837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A26A87-B3E2-4C8A-A247-D7ADE04DC837}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
