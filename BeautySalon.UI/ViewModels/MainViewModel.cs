@@ -148,7 +148,7 @@ namespace BeautySalon.UI.ViewModels
             {
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("");
+                message.From = new MailAddress("adress");
                 message.To.Add(new MailAddress(User?.Email));
                 message.Subject = "Renovate password";
                 message.IsBodyHtml = true;
@@ -157,7 +157,7 @@ namespace BeautySalon.UI.ViewModels
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("", "");
+                smtp.Credentials = new NetworkCredential("adress", "password");
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
                 InformationMessage("Message was sent");
